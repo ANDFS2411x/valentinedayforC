@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi Valentine?</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@400;700&display=swap">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Fira Sans Extra Condensed', sans-serif;
+            background-color: #ffc0cb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #container {
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        #question {
+            font-size: 65px;
+            font-family: 'Fira Sans Extra Condensed', sans-serif;
+            color: #800080;
+            margin-bottom: 20px;
+        }
+
+        #coquette {
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: #ff69b4;
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 0 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #ff69b4;
+            transition: background-color 0.3s;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .button:hover {
+            background-color: #d450a0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="question">¿Chía, quieres ser mi Valentine?</div>
+        <div id="coquette">˚˖𓍢ִ໋🌷͙֒✧˚.🎀༘⋆🧸ྀི˗ˏˋ 🍓 ˎˊ˗</div>
+        <div id="buttons">
+            <button class="button" onclick="respuesta('Si')">¡yoooooo!</button>
+            <button class="button" id="noButton" onclick="moverNo()">nohate</button>
+        </div>
+    </div>
+
+    <script>
+        // Textos diferentes para el botón "nohate"
+        var textosNoHate = [
+            "¡Me atrapaste, dí que sí!",
+            "presiona sí",
+            "basta",
+            "di q siiii",
+            "¡tomta",
+            "plssdiqsí" ,
+            "y si dices q sí",
+            " hate ",
+            "pelotuda",
+            "yo y los q dicen no",
+            // Agrega más textos según sea necesario
+        ];
+
+        function getRandomText() {
+            return textosNoHate[Math.floor(Math.random() * textosNoHate.length)];
+        }
+
+        function moverNo() {
+            var button = document.getElementById("noButton");
+            var maxX = window.innerWidth - button.offsetWidth;
+            var maxY = window.innerHeight - button.offsetHeight;
+
+            var newX = Math.floor(Math.random() * maxX);
+            var newY = Math.floor(Math.random() * maxY);
+
+            button.style.position = "absolute";
+            button.style.left = newX + "px";
+            button.style.top = newY + "px";
+
+            // Cambiar el texto del botón a uno aleatorio
+            button.innerHTML = getRandomText();
+        }
+
+        // Si dice que sí: 
+        var gifPaths = [
+            './gifshellokitty/hk1.gif',
+            './gifshellokitty/hk2.gif',
+            './gifshellokitty/hk3.gif',
+            './gifshellokitty/hk4.gif',
+            './gifshellokitty/hk5.gif',
+            // Agrega más rutas de archivos GIF según sea necesario
+        ];
+
+        function mostrarGIFs() {
+            var container = document.getElementById("container");
+
+            gifPaths.forEach(function (path) {
+                var img = document.createElement("img");
+                img.src = path;
+                container.appendChild(img);
+            });
+        }
+
+        function respuesta(opcion) {
+            if (opcion === 'Si') {
+                mostrarGIFs();
+            }
+            // Puedes agregar más lógica según sea necesario
+        }
+    </script>
+</body>
+</html>
